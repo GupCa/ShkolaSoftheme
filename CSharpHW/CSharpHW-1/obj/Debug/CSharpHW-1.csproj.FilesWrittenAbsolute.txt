@@ -1,0 +1,5 @@
+/Users/vlad/Documents/GitHub/ShkolaSoftheme/CSharpHW/CSharpHW-1/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/vlad/Documents/GitHub/ShkolaSoftheme/CSharpHW/CSharpHW-1/bin/Debug/CSharpHW_1.exe.mdb
+/Users/vlad/Documents/GitHub/ShkolaSoftheme/CSharpHW/CSharpHW-1/bin/Debug/CSharpHW_1.exe
+/Users/vlad/Documents/GitHub/ShkolaSoftheme/CSharpHW/CSharpHW-1/obj/Debug/CSharpHW_1.exe
+/Users/vlad/Documents/GitHub/ShkolaSoftheme/CSharpHW/CSharpHW-1/obj/Debug/CSharpHW_1.exe.mdb
