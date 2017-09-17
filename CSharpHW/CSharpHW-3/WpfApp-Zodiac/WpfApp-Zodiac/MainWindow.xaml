@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp_Zodiac.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_Zodiac"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBox Name="TextBox" HorizontalAlignment="Left" Height="23" Margin="321,32,0,0" TextWrapping="Wrap" Text="18/02/1997" VerticalAlignment="Top" Width="177" />
+        <Label Content="Input your date of birth (DD/MM/YYYY)" HorizontalAlignment="Left" Margin="27,29,0,0" VerticalAlignment="Top" Width="255"/>
+        <Label Name="Label_age" Content="" HorizontalAlignment="Left" Margin="27,108,0,0" VerticalAlignment="Top" Width="170"/>
+        <Label Name="Label_zodiac" Content="" HorizontalAlignment="Left" Margin="27,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.137,0.536" Width="170"/>
+        <Image  Name="Image_zodiac" HorizontalAlignment="Left" Height="116" Margin="258,139,0,0" VerticalAlignment="Top" Width="207"/>
+        <Button Click="ButtonBase_OnClick" Content="Lets calculate things!" HorizontalAlignment="Left" Margin="27,72,0,0" VerticalAlignment="Top" Width="471"/>
+
+    </Grid>
+</Window>
