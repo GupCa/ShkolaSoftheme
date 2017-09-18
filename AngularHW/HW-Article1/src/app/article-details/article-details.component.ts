@@ -9,6 +9,8 @@ export class ArticleDetailsComponent implements OnInit {
 
   constructor() { }
 
+  isClicked = true;
+
   heading ="";
 
   article: any[] = [{
@@ -18,7 +20,7 @@ export class ArticleDetailsComponent implements OnInit {
   }]
   
   changeColor(): void {
-    
+    this.isClicked = !this.isClicked;
 	}
 
   ngOnInit() {

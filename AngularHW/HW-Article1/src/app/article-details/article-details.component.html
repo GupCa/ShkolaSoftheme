@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-3" *ngFor="let a of article">
 			<div class="thumbnail">				
-					<div (click)="changeColor()" [style.color]= 'grey'> <h1><b>{{a.title}}</b></h1></div>					
+					<div ><h1><b (click)="changeColor()" [ngClass]="{clicks : isClicked === false}">{{a.title}}</b></h1></div>					
 					<p>{{a.shortDescription}}</p>
 					<div>
 						Зазначте рубрику:
