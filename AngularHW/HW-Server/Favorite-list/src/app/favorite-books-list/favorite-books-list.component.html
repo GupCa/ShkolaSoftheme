@@ -1,0 +1,11 @@
+<div class="row">
+  <div *ngFor="let book of favoritebooks$ | async">
+    <div >
+
+      <h4>
+        <a>{{ book.bookTitle }}</a>
+      </h4>
+
+    </div>
+  </div>
+</div>
