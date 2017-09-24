@@ -1,29 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApplication_MobileOperator
 {
     public class MobileAccount
     {
         
-        public delegate void Checker(string message);
-        public event Checker Called;
-        public event Checker Smsed;
-        public Dictionary<int, string> AddresBook;
+        public delegate void SendMessageDelegate(MobileAccount sender,int number, string message);
+        public delegate void MakeACallDelegate(MobileAccount sender,int number);
+        
+        public event SendMessageDelegate Smsed;
+        public event MakeACallDelegate Called;
+        
+        
+        public Dictionary<int, string> AddresBook = new Dictionary<int, string>
+        {
+            {123, "Ann"},
+            {345, "Vlad"},
+            {666, "Satana"}
+        };
 
         public int Number { get; set; }
 
-        public void SendMessage(int numberReceiver)
+        public void SendMessage(int numberReceiver, string message)
+        {            
+            Smsed?.Invoke(this, numberReceiver, message);
+        }
+        
+        public void ReceiveMessage(int numberSender, string message)
         {
-            if (numberReceiver != 0)
+            var nameInAddresBook = AddresBook.SingleOrDefault(x => x.Key == numberSender);
+            
+            if (nameInAddresBook.Value != default(string))
             {
-                Smsed($"SMS sended from {Number} to {numberReceiver}");
-            }
+                Console.WriteLine($"SMS from {nameInAddresBook.Value} to {this.Number} : {message}");
+                return;
+            } 
+            
+            Console.WriteLine($"SMS from {numberSender} to {this.Number} : {message}");
         }
         
         public void MakeCall(int numberReceiver)
+        {            
+            Called?.Invoke(this, numberReceiver);
+        }
+        
+        public void ReceiveCall(int numberSender)
         {
-            Called($"Call made from {Number} to {numberReceiver}");
+            var nameInAddresBook = AddresBook.SingleOrDefault(x => x.Key == numberSender);
+            
+            if (nameInAddresBook.Value != default(string))
+            {
+                Console.WriteLine($"Call from {nameInAddresBook.Value} to {this.Number}");
+                return;
+            } 
+            Console.WriteLine($"Call from {numberSender} to {this.Number}");
         }
     }
 }
