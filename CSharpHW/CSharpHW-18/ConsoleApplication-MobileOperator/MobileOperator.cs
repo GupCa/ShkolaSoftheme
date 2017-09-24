@@ -26,7 +26,5 @@ namespace ConsoleApplication_MobileOperator
             var receiver = _mobileAccounts.Single(x => x.Number == numberReceiver);
             receiver.ReceiveCall(sender.Number);
         }
-        
-        //маршрутизация
     }
 }

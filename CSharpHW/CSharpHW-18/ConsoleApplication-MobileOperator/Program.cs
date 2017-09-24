@@ -7,17 +7,18 @@ namespace ConsoleApplication_MobileOperator
     {
         public static void Main(string[] args)
         {
-            var account1 = new MobileAccount();
-            account1.Number = 123;
-            var account2 = new MobileAccount();
-            account2.Number = 345;
+            var account1 = new MobileAccount(123);
+            var account2 = new MobileAccount(345);
+            
+            account1.AddresBook.Add(account2.Number, "Vlad");
+            account2.AddresBook.Add(account1.Number, "Ann");
             
             var mobileOperator = new MobileOperator();
             mobileOperator.AddAccount(account1);
             mobileOperator.AddAccount(account2);
             
-            account1.SendMessage(345, "hello");
-            account2.MakeCall(123);
+            account1.SendMessage(account2.Number, "hello");
+            account2.MakeCall(account1.Number);
 
         }
     }

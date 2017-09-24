@@ -12,17 +12,17 @@ namespace ConsoleApplication_MobileOperator
         
         public event SendMessageDelegate Smsed;
         public event MakeACallDelegate Called;
-        
-        
-        public Dictionary<int, string> AddresBook = new Dictionary<int, string>
+
+        public MobileAccount(int number)
         {
-            {123, "Ann"},
-            {345, "Vlad"},
-            {666, "Satana"}
-        };
+            Number = number;
+            AddresBook = new Dictionary<int, string>();
+        }
+        
+        public Dictionary<int, string> AddresBook { get; }
 
-        public int Number { get; set; }
-
+        public int Number { get; }
+        
         public void SendMessage(int numberReceiver, string message)
         {            
             Smsed?.Invoke(this, numberReceiver, message);
