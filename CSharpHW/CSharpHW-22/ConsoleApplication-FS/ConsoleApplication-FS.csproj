@@ -44,15 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\CSharpHW-19\ConsoleApplication-LINQ\MobileAccount.cs">
-      <Link>MobileAccount.cs</Link>
-    </Compile>
-    <Compile Include="..\..\CSharpHW-19\ConsoleApplication-LINQ\MobileOperator.cs">
-      <Link>MobileOperator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\CSharpHW-19\ConsoleApplication-LINQ\Program.cs">
-      <Link>Program.cs</Link>
-    </Compile>
+    <Compile Include="MobileAccount.cs" />
+    <Compile Include="MobileOperator.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

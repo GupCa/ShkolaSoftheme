@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
-using System.Xml.Serialization;
-using System.IO.Compression;
 
-namespace ConsoleApplication_MobileOperator
+namespace ConsoleApplication_FS
 {
     [Serializable]
     public class MobileAccount
@@ -71,6 +67,49 @@ namespace ConsoleApplication_MobileOperator
             }
 
             Console.WriteLine($"Call from {numberSender} to {this.Number}");
+        }
+
+        public void Serialize()
+        {
+            var addressBook = AddresBook.ToArray();
+            
+            var formatter = new DataContractSerializer(addressBook.GetType());
+
+            if (File.Exists("MobileAccount.xml"))
+            {
+                File.Delete("MobileAccount.xml");
+            }
+            
+            using (var fs = new FileStream("MobileAccount.xml", FileMode.OpenOrCreate))
+            {
+                formatter.WriteObject(fs, addressBook);
+            }
+        }
+
+        public Dictionary<int,string> DeSerialize()
+        {
+            var formatter = new DataContractSerializer(typeof(KeyValuePair<int, string>[]));
+
+            using (var fs = new FileStream("MobileAccount.xml", FileMode.Open))
+            {
+                var deserializedMobileAccount = (KeyValuePair<int, string>[])formatter.ReadObject(fs);
+                return deserializedMobileAccount.ToDictionary(x => x.Key, x => x.Value);
+            }
+        }
+
+        public void Zip()
+        {
+            Serialize();
+            var archive = ZipFile.Open("AdressBook.zip", ZipArchiveMode.Update);
+            archive.CreateEntryFromFile("MobileAccount.xml", "data");
+            archive.Dispose(); 
+        }
+
+        public Dictionary<int,string> Unzip()
+        {
+            var archive = ZipFile.Open("AdressBook.zip", ZipArchiveMode.Read);
+            archive.Entries.First().ExtractToFile("MobileAccount.xml", true);
+            return DeSerialize();
         }
     }
 }
